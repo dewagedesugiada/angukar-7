@@ -1,0 +1,40 @@
+<div class="card">
+    <div class="card-body">
+      <form [formGroup]="angForm" novalidate>
+        <div class="form-group">
+          <label class="col-md-4">Open Date</label>
+          <input type="date" class="form-control" formControlName="open_date" #open_date />
+        </div>
+        <div *ngIf="angForm.controls['open_date'].invalid && (angForm.controls['open_date'].dirty || angForm.controls['open_date'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['open_date'].errors.required">
+            Open date is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Balance </label>
+          <input type="text" class="form-control" formControlName="Balance" #Balance />
+        </div>
+        <div *ngIf="angForm.controls['Balance'].invalid && (angForm.controls['Balance'].dirty || angForm.controls['Balance'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['Balance'].errors.required">
+            Balance is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Customer Number </label>
+          <input type="text" class="form-control" formControlName="customerNumber" #customerNumber />
+        </div>
+        <div *ngIf="angForm.controls['customerNumber'].invalid && (angForm.controls['customerNumber'].dirty || angForm.controls['customerNumber'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['customerNumber'].errors.required">
+            Customer Number is required.
+          </div>
+        </div>
+        <div class="form-group">
+            <button (click)="addAccount(open_date.value, Balance.value, customerNumber.value)"
+            [disabled]="angForm.pristine || angForm.invalid" 
+            class="btn btn-primary">
+            Add Account
+         </button>
+        </div>
+      </form>
+    </div>
+  </div>

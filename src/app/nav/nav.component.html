@@ -1,0 +1,32 @@
+<nav class='navmenu'>
+    <ul>
+        <li><a routerLink='' ><i class="fa fa-home" ></i> Home</a></li>
+        <li class='submenu'><a routerLink='list_customer' >Customer</a>
+           
+        </li>
+        <li class='submenu'><a href="#">Account</a>
+            <ul class='dropdown'>
+                <li><a href="createAccount.html">Create</a></li>
+                <li><a href="accountList.html">List</a></li>
+               
+            </ul>
+        </li>
+        <li class='submenu'><a href="ListTrans.html">Transaction</a>
+            <ul class='dropdown'>
+                <li><a href="transfer.html">Transfer</a></li>
+                <li><a href="Topup.html">Topup</a></li>
+                
+            </ul>
+        </li>
+
+        <li class='submenu' style="float : right;"><a href="#"><span id="userMessage" > </span></a>
+            <ul class='dropdown'>
+                    <li><a href="signin.html" onclick="logout();">Logout</a></li>
+                    
+                </ul>
+        </li>
+    
+  
+   
+    </ul>
+  </nav>

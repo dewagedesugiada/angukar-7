@@ -1,0 +1,49 @@
+<div class="container" >
+  <div class="col-md-12" >
+
+      <h3>ENIGMA</h3>
+
+    <button class="btn btn-primary btn-sm pull-right" (click)="createData()" ><li class="fa fa-plus" ></li> Create </button><br><br>
+      <table class="table" >
+          <thead>
+            
+          
+            <th>customerNumber</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Birth of Date</th>
+            <th>Username</th>
+            <th>Phone Type</th>
+            <th>Phone Number</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            
+            <tr *ngFor = "let item of customer" >
+           
+              <td>{{ item.customerNumber }} </td>
+              <td>{{ item.firstName }}</td>
+              <td>{{ item.lastName }}</td>
+              <td>{{ item.birthDate }}</td>
+              <td>{{ item.username }}</td>
+              <td>{{ item.phonetype }}</td>
+              <td>{{ item.phoneNumber }}</td>
+              <td><a (click)="selectCustomer(item);" class="btn btn-primary btn-sm"><i class="fa fa-edit "></i></a>
+              <a (click)="deleteCustomer(item.customerNumber)" class="btn btn-danger btn-sm"><i class="fa fa-trash "></i></a>
+              </td>
+             
+            </tr>
+          </tbody>
+      </table>
+
+      <div>
+        
+      </div>
+
+      <app-create-customer [customer]="selectedCustomer" *ngIf="showForm" (result)="prosesResult($event)" >  </app-create-customer>
+      <app-form-customer [customer]="selectedCustomer" *ngIf="showDetail" (result)="prosesResult($event)" >  </app-form-customer>
+     
+      
+
+    </div>
+</div>

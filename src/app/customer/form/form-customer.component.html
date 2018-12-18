@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>
+    
+  </title>
+
+</head>
+<body>
+
+  
+
+    <div class="container" >
+      <div class="col-md-10" >
+          <h3>UPDATE DATA CUSTOMER</h3>
+
+        <div class="form-group row">
+              <label for="firstname" class="col-sm-2 col-form-label col-form-label-sm">Fistname</label>
+              <div class="col-sm-10">
+                <input type="text" [(ngModel)]="customer.firstName"  class="form-control form-control-sm" id="firstname">
+              </div>
+        </div>
+        <div class="form-group row">
+          <label for="lastname" class="col-sm-2 col-form-label col-form-label-sm">LastName</label>
+          <div class="col-sm-10">
+            <input type="text" [(ngModel)]="customer.lastName"  class="form-control form-control-sm" id="lastname" >
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="date" class="col-sm-2 col-form-label col-form-label-sm">Birth Of Date</label>
+          <div class="col-sm-10">
+            <input type="date" [(ngModel)]="customer.birthDate"  class="form-control form-control-sm" id="date" >
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="phonetype" class="col-sm-2 col-form-label col-form-label-sm">PhoneType</label>
+          <div class="col-sm-10">
+            <!-- <input type="text" [(ngModel)]="customer.phonetype" class="form-control form-control-sm" id="phonetype"> -->
+            <select [(ngModel)]="customer.phonetype" class="form-control" id="phonetype" >
+              <option selected  >{{customer.phonetype}}</option>
+              <option  value="Android" >Android</option>
+              <option value="IOS">IOS</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="phoneNumber" class="col-sm-2 col-form-label col-form-label-sm">PhoneNumber</label>
+          <div class="col-sm-10">
+            <input type="text" [(ngModel)]="customer.phoneNumber"  class="form-control form-control-sm" id="phoneNumber">
+          </div>
+        </div>
+
+        
+        <button class="btn btn-info btn-sm  " (click)="submitData()" ><i class="fa fa-save" ></i> Update</button>
+        
+        <button class="btn btn-info btn-sm" (click)="cancel()" ><i class="fa fa-save" ></i> Cancel</button>
+
+        <!-- <button (click)="testcustomer()" >test</button>
+        <button (click)="testlagi()" >test2</button> -->
+      </div>
+
+    </div>
+
+    
+  
+</body>
+</html>

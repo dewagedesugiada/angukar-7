@@ -1,1 +1,80 @@
 /* You can add global styles to this file, and also import other style files */
+
+.navmenu {
+    width: 100%;
+    margin: 0px auto;
+    display: block;
+    position: relative;
+    background-color: rgb(202, 13, 13);
+  }
+  
+  nav.navmenu ul {
+    list-style: none;
+    position: relative;
+    width: 80%;
+    box-sizing: border-box;
+    background: rgb(202, 13, 13);
+    margin: 0px auto;
+    padding: 0px;
+  }
+  
+  nav.navmenu li {
+    display: inline-block;
+    position: relative
+  }
+  
+  nav.navmenu li a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #FFF;
+    display: block;
+    box-sizing: border-box;
+  }
+  
+  nav.navmenu li a:hover {
+    background-color: rgb(234, 55, 23)
+  }
+    
+  /*CSS DROPDOWN*/
+  nav.navmenu li.submenu .openmenu {
+    cursor: pointer;
+    color: #FFF;
+    padding: 10px 15px;
+  }
+  
+  nav.navmenu li.submenu ul.dropdown {
+    display: none;
+    padding: 0px;
+    position: absolute;
+    top: 1.6em;
+    width: 200px;
+  }
+  
+  nav.navmenu input[type="checkbox"] {
+    display: none
+  }
+  
+  nav.navmenu li.submenu #openmenu:checked ~ ul.dropdown {
+    display: block;
+    z-index:9
+  }
+  
+  nav.navmenu li.submenu ul.dropdown li {
+    display: block;
+  }
+  nav.navmenu li.submenu ul.dropdown {
+    display: none;
+    padding: 0px;
+    position: absolute;
+  }
+  
+  nav.navmenu li.submenu:hover ul.dropdown {
+    display: block;
+    z-index:9
+  }
+  
+  nav.navmenu li.submenu ul.dropdown li {
+    display: block;
+    width: 200px;
+    background: rgb(243, 96, 28)
+  }
