@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CustomerService } from '../customer.service';
 import { Customer } from '../customer';
+import { FormCustomerComponent } from '../form/form-customer.component';
 
 @Component({
   selector: 'app-customer-list',
@@ -8,6 +9,9 @@ import { Customer } from '../customer';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
+
+  @ViewChild('formCustomer')
+  formCustomer : FormCustomerComponent ;
 
   constructor( private data : CustomerService ) { }
 
@@ -45,8 +49,10 @@ export class CustomerListComponent implements OnInit {
     copyCustomer.phoneNumber = customer.phoneNumber ;
     this.selectedCustomer = copyCustomer ;
     this.showDetail = true ;
-    this.showForm = false ;
-    // console.log(customer.firstName);
+    // this.showForm = false ;
+    this.formCustomer ? this.formCustomer.updateData() : "" ;
+      
+    
   }
 
   prosesResult(result){

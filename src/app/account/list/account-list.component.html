@@ -3,7 +3,7 @@
 
       <h3>ENIGMA</h3>
 
-    <!-- <button class="btn btn-primary btn-sm pull-right" (click)="createData()" ><li class="fa fa-plus" ></li> Create </button><br><br> -->
+    <button class="btn btn-primary btn-sm pull-right" routerLink="/createAccount" ><li class="fa fa-plus" ></li> Create Account </button><br><br>
       <table class="table" >
           <thead>
             
@@ -21,9 +21,9 @@
               <td>{{ item.accountNumber }}</td>
               <td>{{ item.openDate }}</td>
               <td>{{ item.balance }}</td>
-              <td>{{ item.customerNumber ? item.customerNumber.firstName : " " }} </td>
+              <td>{{ item.customerNumber ? item.customerNumber.username : " " }} </td>
               <td><a class="btn btn-primary btn-sm"><i class="fa fa-edit "></i></a>
-              <a  class="btn btn-danger btn-sm"><i class="fa fa-trash "></i></a>
+              <a (click)="deleteAccount(item.accountNumber)" class="btn btn-danger btn-sm"><i class="fa fa-trash "></i></a>
               </td>
              
             </tr>

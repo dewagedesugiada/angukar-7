@@ -21,17 +21,22 @@
         </div>
         <div class="form-group">
           <label class="col-md-4">Customer Number </label>
-          <input type="text" class="form-control" formControlName="customerNumber" #customerNumber />
+          <select formControlName="customerNumber" class="form-control" #customerNumber >
+          <option value="" disabled > Choose </option>
+          <option *ngFor="let item of customer" [ngValue]="item.customerNumber" >  {{item.customerNumber}} </option>
+        </select>
+          <!-- <input type="text" class="form-control" formControlName="customerNumber" #customerNumber /> -->
         </div>
+
         <div *ngIf="angForm.controls['customerNumber'].invalid && (angForm.controls['customerNumber'].dirty || angForm.controls['customerNumber'].touched)" class="alert alert-danger">
           <div *ngIf="angForm.controls['customerNumber'].errors.required">
             Customer Number is required.
           </div>
         </div>
         <div class="form-group">
-            <button (click)="addAccount(openDate.value, balance.value, customerNumber.value)"
+            <button (click)="addAccount()"
             [disabled]="angForm.pristine || angForm.invalid" 
-            class="btn btn-primary">
+            class="btn btn-primary" >
             Add Account
          </button>
         </div>

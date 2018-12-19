@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Customer } from '../customer';
 import { CustomerService } from '../customer.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-customer',
@@ -15,12 +16,65 @@ export class FormCustomerComponent implements OnInit {
     @Output()
     result = new EventEmitter();
 
-  constructor(private customService : CustomerService) { }
+  customerFormGroup : FormGroup
+  constructor(private customService : CustomerService, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.customerFormGroup = this.fb.group({
+      customerNumber : [''],
+      firstName : ['', Validators.required],
+      lastName : ['', Validators.required],
+      birthDate : ['' ,Validators.required],
+      username : [''],
+      password : [''],
+      phonetype : [''],
+      phoneNumber : ['', Validators.required]
+    
+    });
+    this.updateData();
+
+    
+  }
+
+  updateData(){
+    this.setDataToForm(this.customer);
+  }
+
+  setDataToForm(customer){
+    if(customer){
+      this.customerFormGroup.controls['customerNumber'].setValue(this.customer.customerNumber);
+      this.customerFormGroup.controls['firstName'].setValue(this.customer.firstName);
+      this.customerFormGroup.controls['lastName'].setValue(this.customer.lastName);
+      this.customerFormGroup.controls['birthDate'].setValue(this.customer.birthDate);
+      this.customerFormGroup.controls['username'].setValue(this.customer.username);
+      this.customerFormGroup.controls['password'].setValue(this.customer.password);
+      this.customerFormGroup.controls['phonetype'].setValue(this.customer.phonetype);
+      this.customerFormGroup.controls['phoneNumber'].setValue(this.customer.phoneNumber);
+    }
+
   }
 
   submitData(){
+    let customer : Customer = new Customer();
+    customer.customerNumber = this.customerFormGroup.controls['customerNumber'].value; 
+    customer.firstName = this.customerFormGroup.controls['firstName'].value; 
+    customer.lastName = this.customerFormGroup.controls['lastName'].value; 
+    customer.birthDate = this.customerFormGroup.controls['birthDate'].value; 
+    customer.username = this.customerFormGroup.controls['username'].value; 
+    customer.password = this.customerFormGroup.controls['password'].value; 
+    customer.phonetype = this.customerFormGroup.controls['phonetype'].value; 
+    customer.phoneNumber = this.customerFormGroup.controls['phoneNumber'].value; 
+
+    this.customService.update(customer).subscribe(res=>{
+      console.log(JSON.stringify(res));
+      this.result.emit(true);
+    },err => {
+      alert("Error " + JSON.stringify(err));
+    });
+    
+  }
+
+  submitDatass(){
     this.customService.update(this.customer).subscribe( (res)=>{
       console.log(JSON.stringify(res));
       this.result.emit(true);

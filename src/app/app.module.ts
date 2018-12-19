@@ -17,6 +17,7 @@ import { CreateCustomerComponent } from './customer/create/create-customer.compo
 import { AccountListComponent } from './account/list/account-list.component';
 import { CreateAccountComponent } from './account/create/create-account.component';
 import { AccountService } from './account/account.service';
+import { EnigmaPipe } from './share/enigma.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AccountService } from './account/account.service';
     FormCustomerComponent,
     CreateCustomerComponent,
     AccountListComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    EnigmaPipe
   ],
   imports: [
     BrowserModule,

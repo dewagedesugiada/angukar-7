@@ -18,31 +18,34 @@
     <div class="container" >
       <div class="col-md-10" >
           <h3>CREATE DATA CUSTOMER</h3>
+        
+        <form [formGroup]="customerFormGroup"  >
 
         <div class="form-group row">
               <label for="firstname" class="col-sm-2 col-form-label col-form-label-sm">Fistname</label>
               <div class="col-sm-10">
-                <input type="text" [(ngModel)]="customer.firstName"  class="form-control form-control-sm" id="firstname">
+                <input type="text" formControlName="firstName"  class="form-control form-control-sm" id="firstname">
               </div>
+              
         </div>
         <div class="form-group row">
           <label for="lastname" class="col-sm-2 col-form-label col-form-label-sm">LastName</label>
           <div class="col-sm-10">
-            <input type="text" [(ngModel)]="customer.lastName"  class="form-control form-control-sm" id="lastname" >
+            <input type="text"  formControlName="lastName" class="form-control form-control-sm" id="lastname" >
           </div>
         </div>
 
         <div class="form-group row">
           <label for="date" class="col-sm-2 col-form-label col-form-label-sm">Birth Of Date</label>
           <div class="col-sm-10">
-            <input type="date" [(ngModel)]="customer.birthDate"  class="form-control form-control-sm" id="date" >
+            <input type="date" formControlName="birthDate"  class="form-control form-control-sm" id="date" >
           </div>
         </div>
 
         <div class="form-group row">
             <label for="username" class="col-sm-2 col-form-label col-form-label-sm">Username</label>
             <div class="col-sm-10">
-              <input type="text" [(ngModel)]="customer.username" class="form-control form-control-sm" id="username">
+              <input type="text" formControlName="username"  class="form-control form-control-sm" id="username">
              
             </div>
           </div>
@@ -50,7 +53,7 @@
           <div class="form-group row">
               <label for="password" class="col-sm-2 col-form-label col-form-label-sm">Password</label>
               <div class="col-sm-10">
-                <input type="text" [(ngModel)]="customer.password" class="form-control form-control-sm" id="password">
+                <input type="text" formControlName="password" class="form-control form-control-sm" id="password">
                
               </div>
             </div>
@@ -58,7 +61,7 @@
         <div class="form-group row">
           <label for="phonetype" class="col-sm-2 col-form-label col-form-label-sm">PhoneType</label>
           <div class="col-sm-10">
-            <input type="text" [(ngModel)]="customer.phonetype" class="form-control form-control-sm" id="phonetype">
+            <input type="text" formControlName="phonetype" class="form-control form-control-sm" id="phonetype">
            
           </div>
         </div>
@@ -66,14 +69,15 @@
         <div class="form-group row">
           <label for="phoneNumber" class="col-sm-2 col-form-label col-form-label-sm">PhoneNumber</label>
           <div class="col-sm-10">
-            <input type="text" [(ngModel)]="customer.phoneNumber"  class="form-control form-control-sm" id="phoneNumber">
+            <input type="text" formControlName="phoneNumber"  class="form-control form-control-sm" id="phoneNumber">
           </div>
         </div>
 
-        <button class="btn btn-info btn-sm  " (click)="submitData()" ><i class="fa fa-save" ></i> Submit</button>
+        <button class="btn btn-info btn-sm  " (click)="submitData()" type="submit" [disabled]="!customerFormGroup.valid"  ><i class="fa fa-save" ></i> Submit</button>
+        
         <button class="btn btn-info btn-sm" (click)="cancle()" ><i class="fa fa-save" ></i> Cancel</button>
 
-      
+      </form>
       </div>
 
     </div>

@@ -11,7 +11,9 @@ export class AccountListComponent implements OnInit {
 
   account : Account [] = [] ;
 
-  constructor(private data : AccountService) { }
+  constructor(private data : AccountService) { 
+    this.loadData();
+  }
 
   ngOnInit() {
     this.loadData();
@@ -25,6 +27,19 @@ export class AccountListComponent implements OnInit {
     }, err =>{
       console.log('Error' + JSON.stringify(err));
     })
+  }
+
+  deleteAccount(accountNumber){
+    if(confirm("Are you sure this delete accountNumber ? ")){
+      this.data.deleteData(accountNumber).subscribe(res=>{
+        location.href='/list_account';
+      },err =>{
+        alert("Error "+JSON.stringify(err));
+        location.href='/list_account';
+
+      })
+    }
+
   }
 
  
