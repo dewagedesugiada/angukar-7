@@ -1,5 +1,10 @@
+import { Customer } from '../customer/customer';
+
+
 export default class Account{
-    open_date : Date ;
-    Balance : String ;
-    customerNumber : Number ;
+    // customer : Customer ;
+    accountNumber : number ;
+    openDate : Date ;
+    balance : String ;
+    customerNumber : Customer ;
 }

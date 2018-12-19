@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AccountService } from '../account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-account',
@@ -10,20 +11,22 @@ import { AccountService } from '../account.service';
 export class CreateAccountComponent implements OnInit {
 
   angForm: FormGroup;
-  constructor(private fb: FormBuilder, private data : AccountService) {
+  constructor(private fb: FormBuilder, private data : AccountService, private router : Router) {
     this.createForm();
   }
 
   createForm() {
     this.angForm = this.fb.group({
-      open_date: ['', Validators.required ],
-      Balance: ['', Validators.required ],
+      openDate : ['', Validators.required ],
+      balance: ['', Validators.required ],
       customerNumber: ['', Validators.required ]
     });
   }
 
-  addAccount(open_date, Balance, customerNumber){
-    this.data.addAccount(open_date, Balance, customerNumber);
+  addAccount(openDate, balance, customerNumber){
+    this.data.addAccount(openDate, balance, customerNumber);
+    this.router.navigate(["/list_account"]);
+    
   }
 
 

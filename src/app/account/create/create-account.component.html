@@ -3,19 +3,19 @@
       <form [formGroup]="angForm" novalidate>
         <div class="form-group">
           <label class="col-md-4">Open Date</label>
-          <input type="date" class="form-control" formControlName="open_date" #open_date />
+          <input type="date" class="form-control" formControlName="openDate" #openDate />
         </div>
-        <div *ngIf="angForm.controls['open_date'].invalid && (angForm.controls['open_date'].dirty || angForm.controls['open_date'].touched)" class="alert alert-danger">
-          <div *ngIf="angForm.controls['open_date'].errors.required">
+        <div *ngIf="angForm.controls['openDate'].invalid && (angForm.controls['openDate'].dirty || angForm.controls['openDate'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['openDate'].errors.required">
             Open date is required.
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-4">Balance </label>
-          <input type="text" class="form-control" formControlName="Balance" #Balance />
+          <input type="text" class="form-control" formControlName="balance" #balance />
         </div>
-        <div *ngIf="angForm.controls['Balance'].invalid && (angForm.controls['Balance'].dirty || angForm.controls['Balance'].touched)" class="alert alert-danger">
-          <div *ngIf="angForm.controls['Balance'].errors.required">
+        <div *ngIf="angForm.controls['balance'].invalid && (angForm.controls['balance'].dirty || angForm.controls['balance'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['balance'].errors.required">
             Balance is required.
           </div>
         </div>
@@ -29,7 +29,7 @@
           </div>
         </div>
         <div class="form-group">
-            <button (click)="addAccount(open_date.value, Balance.value, customerNumber.value)"
+            <button (click)="addAccount(openDate.value, balance.value, customerNumber.value)"
             [disabled]="angForm.pristine || angForm.invalid" 
             class="btn btn-primary">
             Add Account

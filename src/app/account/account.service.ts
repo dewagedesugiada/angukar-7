@@ -10,12 +10,21 @@ export class AccountService {
 
   constructor( private http : HttpClient ) { }
 
-  addAccount(open_date, Balance, customerNumber){
+  getAccount(){
+    const uri = this.Parenturi + 'accounts' ;
+    return this
+    .http
+    .get(uri);
+  }
+
+  addAccount(openDate, balance, customerNumber){
     const uri = this.Parenturi + 'account' ;
     const obj = {
-      open_date : open_date,
-      Balance : Balance,
-      customerNumber : customerNumber
+      openDate : openDate,
+      balance : balance,
+      customerNumber : {
+        customerNumber : customerNumber
+      } 
     };
     console.log(obj);
     this.http.post(uri, obj).subscribe(res=> console.log("Done"));

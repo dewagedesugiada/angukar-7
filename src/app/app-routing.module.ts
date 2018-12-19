@@ -8,6 +8,7 @@ import { CustomerListComponent } from './customer/list/customer-list.component';
 import { FormCustomerComponent } from './customer/form/form-customer.component';
 import { CreateCustomerComponent } from './customer/create/create-customer.component';
 import { CreateAccountComponent } from './account/create/create-account.component';
+import { AccountListComponent } from './account/list/account-list.component';
 
 const routes: Routes = [
    { path : '' , component : HomeComponent  },
@@ -15,6 +16,7 @@ const routes: Routes = [
    { path : 'list_customer', component : CustomerListComponent },
    { path : 'formCustomer', component : FormCustomerComponent },
    { path : 'createCustomer', component : CreateCustomerComponent},
+   { path : 'list_account', component : AccountListComponent },
    { path : 'signup' , component : SignupComponent },
    { path : 'createAccount', component : CreateAccountComponent }
 

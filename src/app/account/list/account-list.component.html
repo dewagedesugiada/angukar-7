@@ -1,3 +1,35 @@
-<p>
-  account-list works!
-</p>
+<div class="container" >
+  <div class="col-md-12" >
+
+      <h3>ENIGMA</h3>
+
+    <!-- <button class="btn btn-primary btn-sm pull-right" (click)="createData()" ><li class="fa fa-plus" ></li> Create </button><br><br> -->
+      <table class="table" >
+          <thead>
+            
+          
+            <th>Account Number</th>
+            <th>Open Date</th>
+            <th>Balance</th>
+            <th>Customer Name</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            
+            <tr *ngFor = "let item of account" >
+           
+              <td>{{ item.accountNumber }}</td>
+              <td>{{ item.openDate }}</td>
+              <td>{{ item.balance }}</td>
+              <td>{{ item.customerNumber ? item.customerNumber.firstName : " " }} </td>
+              <td><a class="btn btn-primary btn-sm"><i class="fa fa-edit "></i></a>
+              <a  class="btn btn-danger btn-sm"><i class="fa fa-trash "></i></a>
+              </td>
+             
+            </tr>
+          </tbody>
+      </table>
+      
+
+    </div>
+</div>
