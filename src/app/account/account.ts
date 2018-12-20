@@ -1,8 +1,7 @@
 import { Customer } from '../customer/customer';
 
-
-export default class Account{
-    // customer : Customer ;
+export class Account{
+    
     accountNumber : number ;
     openDate : Date ;
     balance : String ;

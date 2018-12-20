@@ -18,6 +18,13 @@ import { AccountListComponent } from './account/list/account-list.component';
 import { CreateAccountComponent } from './account/create/create-account.component';
 import { AccountService } from './account/account.service';
 import { EnigmaPipe } from './share/enigma.pipe';
+import { UpdateAccountComponent } from './account/update/update-account.component';
+import { ListTransactionComponent } from './transaction/list/list-transaction.component';
+import { CreateTransactionComponent } from './transaction/create/create-transaction.component';
+import { UpdateTransactionComponent } from './transaction/update/update-transaction.component';
+import { PipeCustomerPipe } from './customer/pipe-customer.pipe';
+import { CurrencyPipe } from '@angular/common';
+import { ComboCustomerComponent } from './share/component/customer/combo-customer.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +38,13 @@ import { EnigmaPipe } from './share/enigma.pipe';
     CreateCustomerComponent,
     AccountListComponent,
     CreateAccountComponent,
-    EnigmaPipe
+    EnigmaPipe,
+    UpdateAccountComponent,
+    ListTransactionComponent,
+    CreateTransactionComponent,
+    UpdateTransactionComponent,
+    PipeCustomerPipe,
+    ComboCustomerComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +54,7 @@ import { EnigmaPipe } from './share/enigma.pipe';
     ReactiveFormsModule
   
   ],
-  providers: [CustomerService, AccountService ],
+  providers: [CustomerService, AccountService, CurrencyPipe ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,37 @@
+<div class="container" >
+  <div class="col-md-12" >
+
+      <h3>ENIGMA</h3>
+
+    <button class="btn btn-primary btn-sm pull-right" routerLink="/createTransaction" ><li class="fa fa-plus" ></li> Create transaction </button><br><br>
+      <table class="table" >
+          <thead>
+            
+          
+            <th>ID Transaction</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>AmmountSign</th>
+            <th>accountNumber</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            
+            <tr *ngFor = "let item of transaction" >
+           
+              <td>{{ item.idTransaction }}</td>
+              <td>{{ item.type }}</td>
+              <td>{{ item.amount | enigma}}</td>
+              <td>{{ item.amaountSign }}</td>
+              <td>{{ item.accountNumber ? item.accountNumber.accountNumber : " " }} </td>
+              <td><a (click)="selectTransaction(item)" class="btn btn-primary btn-sm"><i class="fa fa-edit "></i></a>
+              <a (click)="deleteTransaction(item.idTransaction)"  class="btn btn-danger btn-sm"><i class="fa fa-trash "></i></a>
+              </td>
+             
+            </tr>
+          </tbody>
+      </table>
+      <app-update-transaction #formTransaction [transaction]="selectedTransaction" *ngIf="showDetail" (result)="prosesResult($event)" ></app-update-transaction>
+
+    </div>
+</div>

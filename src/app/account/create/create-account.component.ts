@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AccountService } from '../account.service';
 import { Router } from '@angular/router';
-import Account from '../account';
+import {Account} from '../account';
 import { Customer } from 'src/app/customer/customer';
 
 @Component({
@@ -13,6 +13,7 @@ import { Customer } from 'src/app/customer/customer';
 export class CreateAccountComponent implements OnInit {
   customer : Object ;
   angForm: FormGroup;
+  // selectedCustomer : Customer  = new Customer() ;
   constructor(private fb: FormBuilder, private data : AccountService, private router : Router) {
     this.createForm();
   }
@@ -49,6 +50,16 @@ export class CreateAccountComponent implements OnInit {
     this.data.addAccount(account);
 
     this.router.navigate(["/list_account"]);
+    
+  }
+
+  setSelectedCustomer(customer : Customer){
+    this.angForm.controls['customerNumber  '].setValue(customer.customerNumber);
+    alert(customer.customerNumber);
+
+    this.angForm.updateValueAndValidity();
+
+      // this.angForm.controls['customerNumer'].setValue(customer.customerNumber) ;
     
   }
 

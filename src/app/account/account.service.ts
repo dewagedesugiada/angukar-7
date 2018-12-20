@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import Account from './account';
+import {Account} from './account';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +11,25 @@ export class AccountService {
 
   constructor( private http : HttpClient ) { }
 
-  getAccount(){
-    const uri = this.Parenturi + 'accounts' ;
+  getAccount(customerNumber){
+    let uri ;
+    if(customerNumber !=undefined){
+     uri = this.Parenturi + 'accounts?customer=' + customerNumber ;
+    }else{
+      uri = this.Parenturi + 'accounts'
+    }
     return this
     .http
     .get(uri);
+  }
+
+  getAccountss(customerNumber?){
+    console.log("service"+customerNumber)
+    let params: string ="" ;
+    if(customerNumber){
+      params = "?customer="+customerNumber;
+    }
+    return this.http.get('http://localhost:8080/account/accounts' + params);
   }
 
   addAccount(account : Account){
@@ -40,6 +54,13 @@ export class AccountService {
     return this
     .http
     .delete(uri);
+  }
+
+  update(account : Account){
+    const uri = this.Parenturi + 'accountt' ;
+    return this
+    .http
+    .put(uri,account);
   }
 
 }

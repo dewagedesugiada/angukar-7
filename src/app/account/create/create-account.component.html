@@ -21,10 +21,12 @@
         </div>
         <div class="form-group">
           <label class="col-md-4">Customer Number </label>
-          <select formControlName="customerNumber" class="form-control" #customerNumber >
+          <!-- <select formControlName="customerNumber" class="form-control" #customerNumber >
           <option value="" disabled > Choose </option>
           <option *ngFor="let item of customer" [ngValue]="item.customerNumber" >  {{item.customerNumber}} </option>
-        </select>
+        </select> -->
+        <app-combo-customer (customer)="setSelectedCustomer($event)" ></app-combo-customer>
+      
           <!-- <input type="text" class="form-control" formControlName="customerNumber" #customerNumber /> -->
         </div>
 

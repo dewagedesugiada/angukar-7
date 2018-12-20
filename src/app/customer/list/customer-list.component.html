@@ -27,8 +27,9 @@
               <td>{{ item.birthDate }}</td>
               <td>{{ item.username }}</td>
               <td>{{ item.phonetype }}</td>
-              <td>{{ item.phoneNumber }}</td>
-              <td><a (click)="selectCustomer(item)" class="btn btn-primary btn-sm"><i class="fa fa-edit "></i></a>
+              <td>{{ item.phoneNumber | pipeCustomer }}</td>
+              <td><a (click)="showAccount(item)" class="btn btn-primary btn-sm"  ><i class="fa fa-eye ">View Account</i></a>
+                <a (click)="selectCustomer(item)" class="btn btn-primary btn-sm"><i class="fa fa-edit "></i></a>
               <a (click)="deleteCustomer(item.customerNumber)" class="btn btn-danger btn-sm"><i class="fa fa-trash "></i></a>
               </td>
              
@@ -41,9 +42,10 @@
       </div>
 
       <app-create-customer [customer]="selectedCustomer" *ngIf="showForm" (result)="prosesResult($event)" >  </app-create-customer>
+      
       <app-form-customer  #formCustomer [customer]="selectedCustomer" *ngIf="showDetail" (result)="prosesResult($event)" >  </app-form-customer>
      
-      
+     
 
     </div>
 </div>

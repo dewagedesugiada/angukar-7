@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import Account from '../account';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {Account} from '../account';
 import { AccountService } from '../account.service';
+import { UpdateAccountComponent } from '../update/update-account.component';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-account-list',
@@ -10,24 +12,66 @@ import { AccountService } from '../account.service';
 export class AccountListComponent implements OnInit {
 
   account : Account [] = [] ;
+  showDetail : boolean = false ;
+  selectedAccount : Account = new Account() ;
 
-  constructor(private data : AccountService) { 
-    this.loadData();
+  @ViewChild('formAccount')
+  formAccount : UpdateAccountComponent ;
+
+  constructor(private data : AccountService, private router : Router, private route : ActivatedRoute) { 
+    
   }
 
   ngOnInit() {
-    this.loadData();
+     this.route.params.subscribe(params => {
+       let customerNumber = params['customerNumber'];
+      
+    this.loadData(customerNumber);
+
+    console.log(JSON.stringify(params))
+      console.log('customerNumber : '+params['customerNumber']);
+      
+    });
   }
 
-  loadData(){
-    this.data.getAccount().subscribe(res=>{
+  loadData(customerNumber?){
+    console.log(customerNumber);
+    this.data.getAccount(customerNumber).subscribe((res)=>{
       Object.assign(this.account,res);
+    }, err=> {
+      alert('Error' + JSON.stringify(err));
 
-      console.log(this.account);
-    }, err =>{
-      console.log('Error' + JSON.stringify(err));
-    })
+
+
+    });
+    // this.data.getAccount().subscribe(res=>{
+    //   Object.assign(this.account,res);
+
+    //   console.log(this.account);
+    // }, err =>{
+    //   console.log('Error' + JSON.stringify(err));
+    // })
   }
+
+  selectAccount(account : Account){
+    let copyAccount = new Account();
+    copyAccount.accountNumber = account.accountNumber;
+    copyAccount.openDate = account.openDate;
+    copyAccount.balance = account.balance;
+    copyAccount.customerNumber = account.customerNumber;
+    this.selectedAccount = copyAccount ;
+    this.showDetail = true ; 
+    this.formAccount ? this.formAccount.updateData() : "" ;
+
+  }
+
+  prosesResult(result){
+    if(result){
+      this.showDetail =false ;
+      this.loadData() ;
+    }
+  }
+
 
   deleteAccount(accountNumber){
     if(confirm("Are you sure this delete accountNumber ? ")){
@@ -40,6 +84,10 @@ export class AccountListComponent implements OnInit {
       })
     }
 
+  }
+
+  showTransaction(account : Account){
+    this.router.navigate(['/list_transaction', {accountNumber : account.accountNumber}]);
   }
 
  

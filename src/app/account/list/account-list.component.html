@@ -20,9 +20,10 @@
            
               <td>{{ item.accountNumber }}</td>
               <td>{{ item.openDate }}</td>
-              <td>{{ item.balance }}</td>
+              <td>{{ item.balance | enigma }}</td>
               <td>{{ item.customerNumber ? item.customerNumber.username : " " }} </td>
-              <td><a class="btn btn-primary btn-sm"><i class="fa fa-edit "></i></a>
+              <td><a (click)="showTransaction(item)" class="btn btn-primary btn-sm"  ><i class="fa fa-eye ">View Transaction</i></a>
+                <a (click)="selectAccount(item)" class="btn btn-primary btn-sm"><i class="fa fa-edit "></i></a>
               <a (click)="deleteAccount(item.accountNumber)" class="btn btn-danger btn-sm"><i class="fa fa-trash "></i></a>
               </td>
              
@@ -30,6 +31,7 @@
           </tbody>
       </table>
       
-
+      <app-update-account #formAccount [account]="selectedAccount" *ngIf="showDetail" (result)="prosesResult($event)" ></app-update-account>
+      
     </div>
 </div>

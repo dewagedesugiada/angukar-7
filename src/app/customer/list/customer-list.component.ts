@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CustomerService } from '../customer.service';
 import { Customer } from '../customer';
 import { FormCustomerComponent } from '../form/form-customer.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-list',
@@ -13,7 +14,7 @@ export class CustomerListComponent implements OnInit {
   @ViewChild('formCustomer')
   formCustomer : FormCustomerComponent ;
 
-  constructor( private data : CustomerService ) { }
+  constructor( private data : CustomerService, private route : Router ) { }
 
   // customer : Object ;
   customer : Customer[] = [] ;
@@ -78,6 +79,10 @@ export class CustomerListComponent implements OnInit {
       );
     }
 
+  }
+
+  showAccount(customer : Customer){
+    this.route.navigate(['/list_account',{customerNumber : customer.customerNumber}]);
   }
 
 }

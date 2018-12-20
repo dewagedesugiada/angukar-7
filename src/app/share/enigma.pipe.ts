@@ -1,12 +1,18 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
+
 
 @Pipe({
   name: 'enigma'
 })
 export class EnigmaPipe implements PipeTransform {
 
-  transform(value: any): any {
-    return "Rp."+value;
+  constructor(private curentPipe : CurrencyPipe){}
+
+  transform(value: any, currency : string, symbol:boolean =false):  string {
+    if(value!=null)
+    return this.curentPipe.transform(value, "Rp. ",symbol);
+    return this.curentPipe.transform(value,currency,symbol).split('00')['0'];
   }
 
 }
